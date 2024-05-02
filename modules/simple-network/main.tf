@@ -21,7 +21,6 @@ resource "aws_internet_gateway" "this" {
   }
 }
 
-################################################ NAT GATEWAY #########################################################
 resource "aws_eip" "this" {
   domain = "vpc"
 
@@ -39,7 +38,6 @@ resource "aws_nat_gateway" "this" {
   }
 }
 
-################################################### Public Route Table ###########################################################
 resource "aws_route_table" "public" { 
   vpc_id = aws_vpc.this.id
 
@@ -52,8 +50,6 @@ resource "aws_route_table" "public" {
     Name = "${var.name_prefix}-public-route-table"
   }
 }
-
-################################################### Private Route Table ###########################################################
 
 resource "aws_route_table" "private" { 
   vpc_id = aws_vpc.this.id
@@ -69,8 +65,6 @@ resource "aws_route_table" "private" {
   
 }
 
-
-################################################### SUBNETS ###########################################################
 
 resource "aws_subnet" "public_subnet" {
   for_each = toset(var.availability_zones)
