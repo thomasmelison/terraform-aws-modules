@@ -24,10 +24,14 @@ variable "policy_arns" {
 variable "containers" {
   description = "List of containers at the task definition"
   type = list(object({
-    name    : string
-    image   : string
-    cpu     : number
-    memory  : number
+    name      : string
+    image     : string
+    cpu       : number
+    memory    : number
+    environment : list(object({
+      name  : string
+      value : string
+    }))
   }))
 
   validation {

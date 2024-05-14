@@ -1,4 +1,3 @@
-
 resource "aws_ecs_task_definition" "this" {
   family                   = var.task_definition_name
   requires_compatibilities = ["FARGATE"]
@@ -13,6 +12,10 @@ resource "aws_ecs_task_definition" "this" {
       cpu              = container.cpu
       memory           = container.memory
       essential        = true
+      environment      = [for env in container.environment : {
+          name  = env.name
+          value = env.value
+      }]
       logConfiguration = {
         logDriver = "awslogs"
         options = {
@@ -24,6 +27,7 @@ resource "aws_ecs_task_definition" "this" {
     }]
   )
 }
+
 
 resource "aws_cloudwatch_log_group" "this" {
   name = "/ecs/${var.task_definition_name}"
