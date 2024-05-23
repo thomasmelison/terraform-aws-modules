@@ -15,12 +15,6 @@ variable "memory" {
   default = null
 }
 
-variable "policy_arns" {
-    type = list(string)
-    description = "List of the arns of the policies that will be attached to the task execution role for specific permissions of the task definition. Example: S3 access to the Task."
-    default = []
-}
-
 variable "containers" {
   description = "List of containers at the task definition"
   type = list(object({

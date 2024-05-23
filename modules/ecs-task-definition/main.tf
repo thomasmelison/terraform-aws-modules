@@ -36,9 +36,6 @@ resource "aws_cloudwatch_log_group" "this" {
 ### ECS Task Execution Role ###
 resource "aws_iam_role" "execution_role" {
   name                = "${var.task_definition_name}-execution-role"
-  managed_policy_arns = [
-    "arn:aws:iam::aws:policy/service-role/AmazonECSTaskExecutionRolePolicy"
-    ]
 
   assume_role_policy = jsonencode({
     Version = "2012-10-17"
@@ -57,12 +54,6 @@ resource "aws_iam_role" "execution_role" {
 
 resource "aws_iam_role" "task_role" {
   name = "${var.task_definition_name}-ecs-task-role"
-  managed_policy_arns = concat(
-    [
-      "arn:aws:iam::aws:policy/service-role/AmazonECSTaskExecutionRolePolicy"
-    ],
-    var.policy_arns
-  )
   assume_role_policy = jsonencode({
     Version = "2012-10-17"
     Statement = [

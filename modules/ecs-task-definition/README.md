@@ -13,7 +13,7 @@ No requirements.
 
 | Name | Version |
 |------|---------|
-| <a name="provider_aws"></a> [aws](#provider\_aws) | n/a |
+| <a name="provider_aws"></a> [aws](#provider\_aws) | 4.0.0 |
 
 ## Modules
 
@@ -35,7 +35,6 @@ No modules.
 | <a name="input_containers"></a> [containers](#input\_containers) | List of containers at the task definition | <pre>list(object({<br>    name      : string<br>    image     : string<br>    cpu       : number<br>    memory    : number<br>    environment : list(object({<br>      name  : string<br>      value : string<br>    }))<br>  }))</pre> | n/a | yes |
 | <a name="input_cpu"></a> [cpu](#input\_cpu) | Number of CPU units used by the Task Definition. | `number` | `null` | no |
 | <a name="input_memory"></a> [memory](#input\_memory) | Amount of memory used by the task definition. | `number` | `null` | no |
-| <a name="input_policy_arns"></a> [policy\_arns](#input\_policy\_arns) | List of the arns of the policies that will be attached to the task execution role. | `list(string)` | `[]` | no |
 | <a name="input_region"></a> [region](#input\_region) | Region of the log group of the container. | `string` | n/a | yes |
 | <a name="input_task_definition_name"></a> [task\_definition\_name](#input\_task\_definition\_name) | Name for the task definition (attribute family at the AWS Task Definition Resource) | `string` | n/a | yes |
 
@@ -44,4 +43,6 @@ No modules.
 | Name | Description |
 |------|-------------|
 | <a name="output_ecs_task_definition_arn"></a> [ecs\_task\_definition\_arn](#output\_ecs\_task\_definition\_arn) | ARN of the task definition that has been provisioned. |
+| <a name="output_execution_role_id"></a> [execution\_role\_id](#output\_execution\_role\_id) | Role ID of the execution role that is used by the task. |
+| <a name="output_task_role_id"></a> [task\_role\_id](#output\_task\_role\_id) | Role ID of the task role used by the task. These is the role that will be used when the container is running. |
 <!-- END_TF_DOCS -->
