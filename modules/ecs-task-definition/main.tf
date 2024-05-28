@@ -33,7 +33,6 @@ resource "aws_cloudwatch_log_group" "this" {
   name = "/ecs/${var.task_definition_name}"
 }
 
-### ECS Task Execution Role ###
 resource "aws_iam_role" "execution_role" {
   name                = "${var.task_definition_name}-execution-role"
 

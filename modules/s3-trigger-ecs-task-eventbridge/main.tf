@@ -92,7 +92,8 @@ resource "aws_cloudwatch_event_rule" "this" {
           {"prefix": "${local.rules_and_targets_formatted[count.index].prefix}"},
           {"suffix": "${local.rules_and_targets_formatted[count.index].suffix}"}
           ]
-      }
+      },
+      "eventName": ["PutObject"]
     }
   }
   EOF
